@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Salaries index{% endblock %}
+
+{% block body %}
+    <h1>Salaries index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for salary in salaries %}
+            <tr>
+                <td>{{ salary.id }}</td>
+                <td>
+                    <a href="{{ path('app_salaries_show', {'id': salary.id}) }}">show</a>
+                    <a href="{{ path('app_salaries_edit', {'id': salary.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="2">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_salaries_new') }}">Create new</a>
+{% endblock %}
